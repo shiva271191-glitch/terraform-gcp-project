@@ -1,10 +1,28 @@
+# ==========================================
 # Terraform files
+# ==========================================
+
 .terraform/
 *.tfstate
 *.tfstate.*
 crash.log
 .terraform.lock.hcl
 
-# Sensitive files
+
+# ==========================================
+# Variable files
+# ==========================================
+
+# Ignore all tfvars
 *.tfvars
+
+# BUT allow this file for Jenkins auto deploy
+!terraform.auto.tfvars
+
+
+# ==========================================
+# Sensitive files
+# ==========================================
+
+# Ignore service account keys
 *.json
