@@ -1,12 +1,15 @@
 resource "google_compute_instance" "vm" {
-  name         = "terraform-vm4"
-  machine_type = "e2-micro"
-  zone         = "us-central1-a"
+  name         = var.vm_name
+  machine_type = var.machine_type
+  
+  lifecycle {
+    create_before_destroy = true
+  }
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
-      size  = 10
+      image = var.image
+      size  = var.disk_size
     }
   }
 
@@ -17,4 +20,3 @@ resource "google_compute_instance" "vm" {
 
   tags = ["practice-vm"]
 }
-
