@@ -1,8 +1,7 @@
 resource "google_compute_instance" "vm" {
   name         = var.vm_name
   machine_type = var.machine_type
-  zone = var.zone
-
+  zone         = var.zone
 
   lifecycle {
     create_before_destroy = true
@@ -22,3 +21,20 @@ resource "google_compute_instance" "vm" {
 
   tags = ["practice-vm"]
 }
+
+module "gcs_bucket" {
+
+  source = "./modules/gcs_bucket"
+
+  bucket_name   = var.bucket_name
+  location      = var.region
+  storage_class = "STANDARD"
+  versioning    = true
+
+  labels = {
+    environment = "dev"
+    team        = "devops"
+  }
+
+}
+

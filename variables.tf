@@ -32,3 +32,8 @@ variable "disk_size" {
   type        = number
   description = "Boot disk size in GB"
 }
+
+variable "bucket_name" {
+  description = "GCS bucket name"
+  type        = string
+}
