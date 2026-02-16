@@ -6,6 +6,6 @@ vm_name      = "terraform-vm15"
 machine_type = "e2-medium"
 image        = "debian-cloud/debian-11"
 disk_size    = 10
-bucket_name = "devopslearn-storage-483509-new"
+bucket_name = "devopslearn-storage-483509-new1"
 
 
