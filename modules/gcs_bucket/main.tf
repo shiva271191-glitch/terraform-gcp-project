@@ -6,14 +6,4 @@ resource "google_storage_bucket" "bucket" {
 
   uniform_bucket_level_access = true
 
-  versioning {
-    enabled = var.versioning
-  }
-
-  labels = var.labels
-
-  lifecycle {
-    prevent_destroy = false
-  }
-
 }

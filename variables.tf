@@ -1,39 +1,43 @@
 variable "project_id" {
-  type        = string
-  description = "GCP Project ID"
+  type = string
 }
 
 variable "region" {
-  type        = string
-  description = "GCP Region"
+  type = string
 }
 
 variable "zone" {
-  type        = string
-  description = "GCP Zone"
+  type = string
 }
 
 variable "vm_name" {
-  type        = string
-  description = "Name of the VM"
+  type = string
 }
 
 variable "machine_type" {
-  type        = string
-  description = "Machine type for VM"
+  type = string
 }
 
 variable "image" {
-  type        = string
-  description = "Boot disk image"
+  type = string
 }
 
 variable "disk_size" {
-  type        = number
-  description = "Boot disk size in GB"
+  type = number
+}
+
+variable "startup_script" {
+  type = string
 }
 
 variable "bucket_name" {
-  description = "GCS bucket name"
-  type        = string
+  type = string
+}
+
+variable "bucket_location" {
+  type = string
+}
+
+variable "storage_class" {
+  type = string
 }

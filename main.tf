@@ -1,25 +1,14 @@
-resource "google_compute_instance" "vm" {
-  name         = var.vm_name
-  machine_type = var.machine_type
-  zone         = var.zone
+module "vm" {
 
-  lifecycle {
-    create_before_destroy = true
-  }
+  source = "./modules/vm"
 
-  boot_disk {
-    initialize_params {
-      image = var.image
-      size  = var.disk_size
-    }
-  }
+  vm_name        = var.vm_name
+  machine_type   = var.machine_type
+  zone           = var.zone
+  image          = var.image
+  disk_size      = var.disk_size
+  startup_script = var.startup_script
 
-  network_interface {
-    network = "default"
-    access_config {}
-  }
-
-  tags = ["practice-vm"]
 }
 
 module "gcs_bucket" {
@@ -27,14 +16,7 @@ module "gcs_bucket" {
   source = "./modules/gcs_bucket"
 
   bucket_name   = var.bucket_name
-  location      = var.region
-  storage_class = "STANDARD"
-  versioning    = true
-
-  labels = {
-    environment = "dev"
-    team        = "devops"
-  }
+  location      = var.bucket_location
+  storage_class = var.storage_class
 
 }
-
